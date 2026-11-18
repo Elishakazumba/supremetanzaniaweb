@@ -9,7 +9,7 @@
   if (!host) return;
   const solidPage = host.dataset.nav === "solid";
 
-  const LOGO = "images/site/STSlogotransparentbackground-2.png";
+  const LOGO = "images/site/logo.png";   // your logo, used exactly as supplied (not edited)
   const BROCHURE = "files/STS-Brochure.pdf";
   const PHONE_DISPLAY = "+255 767 201 113";
   const PHONE_TEL = "+255767201113";
@@ -120,14 +120,22 @@
       </li>`;
   }
 
+  /* ---------- logo styles (no white box; logo.png has a large empty margin around the artwork, so only the artwork area is shown - the file itself is untouched) ---------- */
+  const logoStyle = document.createElement("style");
+  logoStyle.textContent =
+    ".sn-logo-wrap{display:block;padding:0;background:none;box-shadow:none;border-radius:0}" +
+    ".sn-logo-crop{position:relative;display:block;height:68px;aspect-ratio:1670/1825;overflow:hidden;transition:height .3s ease}" +
+    ".sn-logo-crop img{position:absolute;display:block;max-width:none;width:195.45%;height:auto;left:-40.78%;top:-32%}" +
+    "#navbar.py-2 .sn-logo-crop{height:56px}" +
+    "@media(min-width:640px){.sn-logo-crop{height:88px}#navbar.py-2 .sn-logo-crop{height:72px}}";
+  document.head.appendChild(logoStyle);
+
   /* ---------- markup ---------- */
   const html = `
 <header id="navbar" class="fixed top-0 left-0 right-0 z-40 transition-all duration-500 bg-transparent py-4">
   <nav class="max-w-7xl mx-auto px-4 sm:px-6 flex items-center justify-between gap-4">
     <a href="index.html" class="flex items-center shrink-0" aria-label="Supreme Tanzania Safaris - Home">
-      <span id="navLogoWrap" translate="no" class="bg-white/90 rounded-xl px-2.5 py-1 shadow-sm">
-        <img id="navLogoImg" src="${LOGO}" alt="Supreme Tanzania Safaris" class="h-10 sm:h-12 w-auto" />
-      </span>
+      <span id="navLogoWrap" translate="no" class="sn-logo-wrap"><span class="sn-logo-crop"><img id="navLogoImg" src="${LOGO}" alt="Supreme Tanzania Safaris" /></span></span>
     </a>
 
     <ul class="hidden lg:flex items-center gap-0.5" id="navLinks">

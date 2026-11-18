@@ -35,7 +35,7 @@ h1, h2, h3, h4 {
   display: none;
 }
 .gradient-text {
-  background: linear-gradient(135deg, #5f8247, #496636);
+  background: linear-gradient(135deg, #85613f, #6f4e37);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
