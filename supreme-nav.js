@@ -6,7 +6,7 @@
   if (!host) return;
   const solidPage = host.dataset.nav === "solid";
 
-  const LOGO = "images/site/STSlogotransparentbackground-2.png";
+  const LOGO = "images/site/logo.png";   // your logo, used exactly as supplied (not edited)
   const BROCHURE = "files/STS-Brochure.pdf";
   const PHONE_DISPLAY = "+255 767 201 113";
   const PHONE_TEL = "+255767201113";
@@ -122,21 +122,24 @@
   @media(min-width:640px){.sn-bar{padding:0 24px}}
 
   .sn-logo{display:flex;align-items:center;flex-shrink:0}
-  .sn-logo-wrap{display:block;background:rgba(255,255,255,.9);border-radius:12px;padding:4px 10px;box-shadow:0 1px 2px rgba(0,0,0,.08)}
-  .sn-logo-wrap img{height:40px;width:auto;display:block;max-width:none}
-  @media(min-width:640px){.sn-logo-wrap img{height:48px}}
+  /* logo.png has a large empty margin around the artwork, so the page shows only the artwork area (the file itself is untouched) */
+  .sn-logo-wrap{display:block;padding:0;background:none;box-shadow:none;border-radius:0;transition:all .3s ease}
+  .sn-logo-crop{position:relative;display:block;height:68px;aspect-ratio:1670/1825;overflow:hidden;transition:height .3s ease}
+  .sn-logo-crop img{position:absolute;display:block;max-width:none;width:195.45%;height:auto;left:-40.78%;top:-32%}
+  .sn-solid .sn-logo-crop{height:56px}
+  @media(min-width:640px){.sn-logo-crop{height:88px}.sn-solid .sn-logo-crop{height:72px}}
 
   .sn-links{display:none;align-items:center;gap:2px}
   .sn-right{display:none;align-items:center;gap:8px;flex-shrink:0}
   .sn-burger{display:flex;align-items:center;justify-content:center;height:40px;width:40px;border-radius:8px;border:0;background:transparent;cursor:pointer;color:#fff;transition:background .2s,color .2s}
   .sn-burger:hover{background:rgba(255,255,255,.15)}
-  .sn-solid .sn-burger{color:#304025}.sn-solid .sn-burger:hover{background:#f5efe6}
+  .sn-solid .sn-burger{color:#46321f}.sn-solid .sn-burger:hover{background:#f5efe6}
   @media(min-width:1024px){.sn-links,.sn-right{display:flex}.sn-burger{display:none}}
 
   .sn-link{display:inline-flex;align-items:center;gap:4px;padding:8px 12px;border-radius:9999px;font-size:14px;font-weight:500;color:rgba(255,255,255,.9);transition:all .2s ease}
   @media(min-width:1280px){.sn-link{padding:8px 16px}}
   .sn-link:hover{background:rgba(255,255,255,.15);color:#fff;transform:scale(1.05)}
-  .sn-solid .sn-link{color:#6f5739}.sn-solid .sn-link:hover{background:#f5efe6;color:#3a502c}
+  .sn-solid .sn-link{color:#6f5739}.sn-solid .sn-link:hover{background:#f5efe6;color:#5a3e2b}
   #sn-header .sn-link.is-active{text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:8px}
 
   .sn-item,.sn-sub{position:relative}
@@ -148,41 +151,41 @@
   .sn-menu-scroll{max-height:75vh;overflow-y:auto}
   .sn-dd-link{display:block;padding:8px 16px;font-size:14px;color:#6f5739;transition:all .2s}
   .sn-dd-split{display:flex;align-items:center;justify-content:space-between;gap:12px}
-  .sn-dd-link:hover{background:#f3f7f0;color:#3a502c}
-  .sn-dd-link.is-active{color:#3a502c;font-weight:600}
+  .sn-dd-link:hover{background:#f7f1ec;color:#5a3e2b}
+  .sn-dd-link.is-active{color:#5a3e2b;font-weight:600}
 
   .sn-ghost{display:inline-flex;align-items:center;gap:6px;border:2px solid rgba(255,255,255,.7);border-radius:9999px;padding:6px 12px;font-size:14px;font-weight:600;color:#fff;background:transparent;cursor:pointer;font-family:inherit;transition:all .2s}
   .sn-ghost:hover{background:rgba(255,255,255,.15)}
-  .sn-solid .sn-ghost{border-color:#496636;color:#3a502c}.sn-solid .sn-ghost:hover{background:#f3f7f0}
+  .sn-solid .sn-ghost{border-color:#6f4e37;color:#5a3e2b}.sn-solid .sn-ghost:hover{background:#f7f1ec}
   .sn-brochure-txt{display:none}
   @media(min-width:1280px){.sn-brochure-txt{display:inline}}
-  .sn-cta{display:inline-flex;align-items:center;justify-content:center;border-radius:9999px;font-weight:600;font-size:14px;padding:8px 16px;background:rgba(255,255,255,.95);color:#3a502c;box-shadow:0 10px 15px -3px rgba(0,0,0,.1),0 4px 6px -4px rgba(0,0,0,.1);transition:all .3s}
+  .sn-cta{display:inline-flex;align-items:center;justify-content:center;border-radius:9999px;font-weight:600;font-size:14px;padding:8px 16px;background:rgba(255,255,255,.95);color:#5a3e2b;box-shadow:0 10px 15px -3px rgba(0,0,0,.1),0 4px 6px -4px rgba(0,0,0,.1);transition:all .3s}
   .sn-cta:hover{background:#fff;transform:scale(1.03)}
-  .sn-solid .sn-cta{background:#496636;color:#fff}.sn-solid .sn-cta:hover{background:#3a502c}
+  .sn-solid .sn-cta{background:#6f4e37;color:#fff}.sn-solid .sn-cta:hover{background:#5a3e2b}
 
   #sn-langWrap{position:relative}
   #sn-langMenu{display:none;position:absolute;right:0;top:100%;margin-top:8px;min-width:176px;background:#fff;border-radius:16px;box-shadow:0 25px 50px -12px rgba(0,0,0,.25);border:1px solid #f5efe6;padding:8px 0;color:#6f5739;z-index:50}
   #sn-langMenu.open{display:block}
   #sn-langMenu button{display:flex;width:100%;align-items:center;justify-content:space-between;gap:16px;padding:8px 16px;font-size:14px;background:none;border:0;cursor:pointer;color:inherit;font-family:inherit;transition:all .2s}
-  #sn-langMenu button:hover{background:#f3f7f0;color:#3a502c}
+  #sn-langMenu button:hover{background:#f7f1ec;color:#5a3e2b}
   #sn-langMenu button span+span{font-size:12px;color:#c0a578}
 
   /* mobile menu */
   #sn-mobile{position:fixed;inset:0;z-index:1100;visibility:hidden;opacity:0;transition:all .3s}
   #sn-mobile.open{visibility:visible;opacity:1}
-  .sn-backdrop{position:absolute;inset:0;background:rgba(40,54,33,.6);backdrop-filter:blur(4px)}
+  .sn-backdrop{position:absolute;inset:0;background:rgba(51, 36, 26,.6);backdrop-filter:blur(4px)}
   .sn-panel{position:absolute;right:0;top:0;height:100%;width:82%;max-width:384px;background:#faf7f2;box-shadow:0 25px 50px -12px rgba(0,0,0,.4);display:flex;flex-direction:column;transform:translateX(100%);transition:transform .4s ease}
   #sn-mobile.open .sn-panel{transform:none}
   .sn-panel-head{display:flex;align-items:center;justify-content:space-between;padding:16px 20px;border-bottom:1px solid #e8dcc8}
-  .sn-panel-head span{font-family:'Playfair Display',Georgia,serif;font-size:20px;font-weight:700;color:#304025}
-  .sn-panel-head button{display:flex;align-items:center;justify-content:center;height:40px;width:40px;border-radius:8px;border:0;background:transparent;color:#3a502c;cursor:pointer}
+  .sn-panel-head span{font-family:'Playfair Display',Georgia,serif;font-size:20px;font-weight:700;color:#46321f}
+  .sn-panel-head button{display:flex;align-items:center;justify-content:center;height:40px;width:40px;border-radius:8px;border:0;background:transparent;color:#5a3e2b;cursor:pointer}
   .sn-panel-head button:hover{background:#f5efe6}
   .sn-m-list{flex:1;padding:16px 12px;overflow-y:auto}
   .sn-m-list li+li{margin-top:4px}
   .sn-m-row{display:flex;align-items:center}
   .sn-m-link{display:block;flex:1;padding:14px 16px;border-radius:12px;font-weight:500;font-size:16px;color:#6f5739;transition:all .2s}
   .sn-m-link.is-sub{font-size:15px;padding:10px 16px}
-  .sn-m-link:hover,.sn-m-link.is-active{background:#f3f7f0;color:#3a502c}
+  .sn-m-link:hover,.sn-m-link.is-active{background:#f7f1ec;color:#5a3e2b}
   .sn-m-toggle{display:flex;align-items:center;justify-content:center;height:44px;width:44px;border:0;background:none;color:#6f5739;cursor:pointer;border-radius:12px}
   .sn-m-toggle .chev{display:flex;transition:transform .2s}
   .sn-m-toggle .chev.rot{transform:rotate(180deg)}
@@ -192,13 +195,13 @@
   .sn-panel-sec p{margin:0 0 8px;font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.05em;color:#a8895a}
   .sn-chips{display:flex;flex-wrap:wrap;gap:8px}
   .sn-chip{border:1px solid #d6c3a3;border-radius:9999px;padding:6px 12px;font-size:14px;font-weight:600;color:#6f5739;background:none;cursor:pointer;font-family:inherit}
-  .sn-chip:hover{background:#f3f7f0}
-  .sn-chip.on{background:#496636;color:#fff;border-color:#496636}
+  .sn-chip:hover{background:#f7f1ec}
+  .sn-chip.on{background:#6f4e37;color:#fff;border-color:#6f4e37}
   .sn-panel-act{padding:20px;border-top:1px solid #e8dcc8;display:flex;flex-direction:column;gap:12px}
   .sn-panel-act a{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;padding:12px 16px;border-radius:9999px;font-weight:600;font-size:14px}
-  .sn-panel-act .go{background:#496636;color:#fff;font-size:16px;padding:12px 24px;box-shadow:0 10px 15px -3px rgba(0,0,0,.1)}
-  .sn-panel-act .go:hover{background:#3a502c}
-  .sn-panel-act .br{border:2px solid #496636;color:#3a502c}
+  .sn-panel-act .go{background:#6f4e37;color:#fff;font-size:16px;padding:12px 24px;box-shadow:0 10px 15px -3px rgba(0,0,0,.1)}
+  .sn-panel-act .go:hover{background:#5a3e2b}
+  .sn-panel-act .br{border:2px solid #6f4e37;color:#5a3e2b}
   .sn-panel-act .ph{border:2px solid #d6c3a3;color:#6f5739}
   `;
   const styleEl = document.createElement("style");
@@ -218,7 +221,7 @@
 <header id="sn-header">
   <nav class="sn-bar">
     <a href="index.html" class="sn-logo" aria-label="Supreme Tanzania Safaris - Home">
-      <span id="navLogoWrap" translate="no" class="sn-logo-wrap"><img id="navLogoImg" src="${LOGO}" alt="Supreme Tanzania Safaris" /></span>
+      <span id="navLogoWrap" translate="no" class="sn-logo-wrap"><span class="sn-logo-crop"><img id="navLogoImg" src="${LOGO}" alt="Supreme Tanzania Safaris" /></span></span>
     </a>
 
     <ul class="sn-links" id="sn-links">${NAV.map(desktopItem).join("")}</ul>

@@ -36,14 +36,14 @@
     `<a href="${href}" target="_blank" rel="noopener noreferrer" aria-label="Supreme Tanzania Safaris on ${label}" title="Supreme Tanzania Safaris on ${label}" class="sf-soc">${icon}</a>`;
 
   const css = `
-  .sf{background:#283621;color:#e8dcc8;padding:64px 0 96px;font-family:'Plus Jakarta Sans',system-ui,sans-serif;line-height:1.5;text-align:left}
+  .sf{background:#33241a;color:#e8dcc8;padding:64px 0 96px;font-family:'Plus Jakarta Sans',system-ui,sans-serif;line-height:1.5;text-align:left}
   @media(min-width:640px){.sf{padding-bottom:32px}}
   .sf *{box-sizing:border-box}
   .sf a{text-decoration:none}
   .sf ul{list-style:none;margin:0;padding:0}
   .sf-in{max-width:1280px;margin:0 auto;padding:0 16px}
   @media(min-width:640px){.sf-in{padding:0 24px}}
-  .sf-grid{display:grid;gap:40px;padding-bottom:48px;border-bottom:1px solid rgba(58,80,44,.5);grid-template-columns:1fr}
+  .sf-grid{display:grid;gap:40px;padding-bottom:48px;border-bottom:1px solid rgba(90, 62, 43,.5);grid-template-columns:1fr}
   @media(min-width:640px){.sf-grid{grid-template-columns:1fr 1fr}}
   @media(min-width:1024px){.sf-grid{grid-template-columns:1fr 1fr 1fr}}
   .sf-brand{font-family:'Fraunces',Georgia,serif;font-size:20px;font-weight:700;color:#fff;margin:0}
@@ -53,8 +53,8 @@
   .sf-follow{margin-top:24px}
   .sf-follow p{margin:0 0 12px;font-size:14px;font-weight:600;color:#fff}
   .sf-socs{display:flex;align-items:center;gap:12px}
-  .sf-soc{display:inline-flex;height:40px;width:40px;align-items:center;justify-content:center;border-radius:9999px;background:#304025;color:#fff;transition:background .2s}
-  .sf-soc:hover{background:#496636}
+  .sf-soc{display:inline-flex;height:40px;width:40px;align-items:center;justify-content:center;border-radius:9999px;background:#46321f;color:#fff;transition:background .2s}
+  .sf-soc:hover{background:#6f4e37}
   .sf h4{font-family:'Fraunces',Georgia,serif;font-size:18px;font-weight:700;color:#fff;margin:0 0 16px}
   .sf-links li+li{margin-top:10px}
   .sf-links a{color:#d6c3a3;font-size:14px;transition:color .2s}
@@ -64,7 +64,7 @@
   .sf-contact a,.sf-contact .row{display:flex;align-items:center;gap:10px;color:#e8dcc8;transition:color .2s}
   .sf-contact .row{align-items:flex-start}
   .sf-contact a:hover{color:#fff}
-  .sf-contact svg{color:#7fa066;flex-shrink:0}
+  .sf-contact svg{color:#a07a58;flex-shrink:0}
   .sf-contact .row svg{margin-top:2px}
   .sf-copy{padding-top:32px;text-align:center;font-size:14px;color:#c0a578}
   .sf-copy p{margin:0}
