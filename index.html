@@ -48,6 +48,14 @@
     .reviews-link a:hover { text-decoration: underline; }
     @media (max-width: 1000px) { .review-card { flex-basis: calc((100% - 20px) / 2); } }
     @media (max-width: 640px) { .review-card { flex-basis: 85%; } .rev-btn { display: none; } }
+
+    /* Hero video + gallery layout */
+    .hero { overflow: hidden; }
+    .hero-video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0; }
+    @media (prefers-reduced-motion: reduce) { .hero-video { display: none; } .hero { background: #283621 url('images/wildlife/hero-poster.jpg') center / cover; } }
+    .gallery-grid { grid-auto-flow: dense; }
+    .gallery-item.g-big { grid-column: span 2; grid-row: span 2; }
+    @media (max-width: 1000px) { .gallery-grid { grid-template-columns: repeat(2, 1fr); } .gallery-item.g-big { grid-column: auto; grid-row: auto; } }
   </style>
 </head>
 <body>
@@ -63,7 +71,8 @@
   <main>
     <!-- HERO -->
     <section id="home" class="hero">
-      <div class="hero-bg" style="background-image: linear-gradient(135deg, rgba(0,0,0,0.45) 0%, rgba(0,0,0,0.2) 100%), url('images/template/hero-serengeti.jpg');"></div>
+      <video class="hero-video" autoplay muted loop playsinline preload="auto" poster="images/wildlife/hero-poster.jpg"><source src="images/wildlife/hero.mp4" type="video/mp4" /><source src="images/hero.mp4" type="video/mp4" /><source src="videos/hero.mp4" type="video/mp4" /><source src="hero.mp4" type="video/mp4" /></video>
+      <div class="hero-bg" style="background-image: linear-gradient(135deg, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.25) 100%);"></div>
       <div class="hero-content">
         <p class="hero-pretitle">Your Trusted Safari Partner</p>
         <h1>EXPERIENCE TANZANIA WITH SUPREME SAFARIS</h1>
@@ -114,7 +123,7 @@
         <div class="safari-grid">
           <!-- Serengeti Safari -->
           <div class="safari-card">
-            <div class="safari-img" style="background-image: url('images/template/serengeti.jpg');">
+            <div class="safari-img" style="background-image: url('images/wildlife/wildebeest-migration.jpg');">
               <span class="badge-quote">REQUEST A QUOTE</span>
             </div>
             <div class="safari-card-body">
@@ -128,7 +137,7 @@
           </div>
           <!-- Ngorongoro Crater -->
           <div class="safari-card">
-            <div class="safari-img" style="background-image: url('images/template/ngorongoro.jpg');">
+            <div class="safari-img" style="background-image: url('images/wildlife/zebras-ngorongoro.jpg');">
               <span class="badge-quote">REQUEST A QUOTE</span>
             </div>
             <div class="safari-card-body">
@@ -142,7 +151,7 @@
           </div>
           <!-- Tarangire National Park -->
           <div class="safari-card">
-            <div class="safari-img" style="background-image: url('images/template/tarangire.jpg');">
+            <div class="safari-img" style="background-image: url('images/wildlife/elephants-waterhole.jpg');">
               <span class="badge-quote">REQUEST A QUOTE</span>
             </div>
             <div class="safari-card-body">
@@ -156,7 +165,7 @@
           </div>
           <!-- Mikumi National Park -->
           <div class="safari-card">
-            <div class="safari-img" style="background-image: url('images/template/tourists.jpg');">
+            <div class="safari-img" style="background-image: url('images/wildlife/lions-resting.jpg');">
               <span class="badge-quote">REQUEST A QUOTE</span>
             </div>
             <div class="safari-card-body">
@@ -175,7 +184,7 @@
     <!-- FEATURED PACKAGE -->
     <section class="featured section">
       <div class="container">
-        <div class="featured-card" style="background-image: linear-gradient(135deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.5) 100%), url('images/template/serengeti.jpg'); background-size: cover; background-position: center;">
+        <div class="featured-card" style="background-image: linear-gradient(135deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.5) 100%), url('images/wildlife/balloon-safari.jpg'); background-size: cover; background-position: center;">
           <p class="section-label light">Featured Safari Package</p>
           <h2>5 DAYS OF TANZANIA'S WILDLIFE</h2>
           <p class="featured-dest">TARANGIRE • NGORONGORO • SERENGETI</p>
@@ -195,7 +204,7 @@
 
     <!-- KILIMANJARO -->
     <section id="kilimanjaro" class="kilimanjaro section">
-      <div class="kilimanjaro-bg" style="background-image: linear-gradient(135deg, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.3) 100%), url('images/template/kilimanjaro.jpg');"></div>
+      <div class="kilimanjaro-bg" style="background-image: linear-gradient(135deg, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.3) 100%), url('images/wildlife/kilimanjaro-acacia.jpg');"></div>
       <div class="container center-content">
         <p class="section-label light">Mountain Adventures</p>
         <h2 class="section-title light">CLIMB KILIMANJARO</h2>
@@ -218,7 +227,7 @@
         <div class="day-grid-horizontal">
           <!-- Dar es Salaam City Tour -->
           <div class="day-card-horizontal">
-            <div class="day-img-horizontal" style="background-image: url('images/itineraries/mikumi-day-trip.jpg');"></div>
+            <div class="day-img-horizontal" style="background-image: url('images/wildlife/elephant-family.jpg');"></div>
             <div class="day-card-content">
               <h3>Mikumi Day Trip</h3>
               <p>A full day of game drives in Mikumi National Park, out and back from Dar es Salaam.</p>
@@ -364,14 +373,28 @@
         <h2 class="section-title">FOLLOW OUR JOURNEY</h2>
         <p class="section-sub">See Tanzania through the eyes of Supreme Tanzania Safaris.</p>
         <div class="gallery-grid">
-          <div class="gallery-item" style="background-image: url('images/template/tarangire.jpg');"></div>
-          <div class="gallery-item" style="background-image: url('images/template/serengeti.jpg');"></div>
-          <div class="gallery-item" style="background-image: url('images/template/ngorongoro.jpg');"></div>
-          <div class="gallery-item" style="background-image: url('images/template/kilimanjaro.jpg');"></div>
-          <div class="gallery-item" style="background-image: url('images/template/maasai.jpg');"></div>
-          <div class="gallery-item" style="background-image: url('images/template/materuni.jpg');"></div>
-          <div class="gallery-item" style="background-image: url('images/template/kikuletwa.jpg');"></div>
-          <div class="gallery-item" style="background-image: url('images/template/tourists.jpg');"></div>
+          <div class="gallery-item g-big" role="img" aria-label="Hot air balloons over the Serengeti" style="background-image: url('images/wildlife/balloon-safari.jpg');"></div>
+          <div class="gallery-item" role="img" aria-label="Elephants at a waterhole" style="background-image: url('images/wildlife/elephants-waterhole.jpg');"></div>
+          <div class="gallery-item" role="img" aria-label="Lion" style="background-image: url('images/wildlife/lion-portrait.jpg');"></div>
+          <div class="gallery-item" role="img" aria-label="Zebras in Ngorongoro Crater" style="background-image: url('images/wildlife/zebras-ngorongoro.jpg');"></div>
+          <div class="gallery-item" role="img" aria-label="Leopard resting in a tree" style="background-image: url('images/wildlife/leopard-in-tree.jpg');"></div>
+          <div class="gallery-item" role="img" aria-label="Flamingos on a lake" style="background-image: url('images/wildlife/flamingos.jpg');"></div>
+          <div class="gallery-item" role="img" aria-label="Cheetah" style="background-image: url('images/wildlife/cheetah.jpg');"></div>
+          <div class="gallery-item" role="img" aria-label="Rhino" style="background-image: url('images/wildlife/rhino.jpg');"></div>
+          <div class="gallery-item" role="img" aria-label="Buffalo with oxpeckers" style="background-image: url('images/wildlife/buffalo-oxpeckers.jpg');"></div>
+          <div class="gallery-item" role="img" aria-label="Chimpanzee mother with her baby" style="background-image: url('images/wildlife/chimpanzee-mother-baby.jpg');"></div>
+          <div class="gallery-item" role="img" aria-label="Elephant walking" style="background-image: url('images/wildlife/elephant-walking.jpg');"></div>
+          <div class="gallery-item" role="img" aria-label="Kudu and antelope" style="background-image: url('images/wildlife/kudu.jpg');"></div>
+          <div class="gallery-item" role="img" aria-label="Hippo with its mouth open" style="background-image: url('images/wildlife/hippo-yawn.jpg');"></div>
+          <div class="gallery-item g-big" role="img" aria-label="Wildebeest migration across the plains" style="background-image: url('images/wildlife/wildebeest-migration.jpg');"></div>
+          <div class="gallery-item" role="img" aria-label="Elephant family" style="background-image: url('images/wildlife/elephant-family.jpg');"></div>
+          <div class="gallery-item" role="img" aria-label="Cape buffalo" style="background-image: url('images/wildlife/buffalo-portrait.jpg');"></div>
+          <div class="gallery-item" role="img" aria-label="Zebras drinking" style="background-image: url('images/wildlife/zebras-drinking.jpg');"></div>
+          <div class="gallery-item" role="img" aria-label="Lions resting in the grass" style="background-image: url('images/wildlife/lions-resting.jpg');"></div>
+          <div class="gallery-item" role="img" aria-label="Chimpanzees in the forest" style="background-image: url('images/wildlife/chimpanzee-hanging.jpg');"></div>
+          <div class="gallery-item" role="img" aria-label="Elephant herd" style="background-image: url('images/wildlife/elephants-herd.jpg');"></div>
+          <div class="gallery-item" role="img" aria-label="Leopard on a branch" style="background-image: url('images/wildlife/leopard-branch.jpg');"></div>
+          <div class="gallery-item" role="img" aria-label="Acacia trees with Kilimanjaro behind" style="background-image: url('images/wildlife/kilimanjaro-acacia.jpg');"></div>
         </div>
         <div class="gallery-cta">
           <span>@supremetanzaniasafaris</span>
