@@ -105,16 +105,6 @@
 
 <script src="lucide.min.js"></script>
 <link rel="stylesheet" href="style.css" />
-
-<style>
-  .filter-btn{border-color:#d9c3ae;color:#5a3e2b;background:#fff}
-  .filter-btn:hover{background:#f7f1ec}
-  .filter-btn[aria-pressed="true"]{background:#6f4e37;border-color:#6f4e37;color:#fff}
-  .filter-btn:focus-visible{outline:3px solid #a07a58;outline-offset:2px}
-  .trip-card{transition:box-shadow .25s ease}
-  .trip-card:hover{box-shadow:0 12px 28px -12px rgba(51, 36, 26,.35)}
-  
-</style>
 </head>
 <body class="min-h-screen bg-sand-50 font-sans text-[#2a241c]">
 
@@ -206,9 +196,13 @@
           <textarea name="message" rows="4" placeholder="Tell us about your dream Tanzania adventure..." class="w-full min-w-0 max-w-full px-4 py-3 rounded-xl border-2 border-sand-200 focus:border-savanna-500 focus:outline-none text-sand-800 bg-white resize-none transition-colors"></textarea>
 
           <div class="flex flex-col sm:flex-row gap-3 pt-2">
-            <button type="submit" class="flex-1 inline-flex items-center justify-center gap-2 px-4 sm:px-6 py-3.5 rounded-full bg-whatsapp hover:bg-whatsapp-dark text-white font-semibold shadow-lg shadow-whatsapp/30 transition-all hover:scale-[1.02]">
+            <button type="button" id="sendWa" class="flex-1 inline-flex items-center justify-center gap-2 px-4 sm:px-6 py-3.5 rounded-full bg-whatsapp hover:bg-whatsapp-dark text-white font-semibold shadow-lg shadow-whatsapp/30 transition-all hover:scale-[1.02]">
               <i data-lucide="message-circle" class="h-5 w-5"></i>
-              Send Inquiry on WhatsApp
+              Send on WhatsApp
+            </button>
+            <button type="button" id="sendEmail" class="flex-1 inline-flex items-center justify-center gap-2 px-4 sm:px-6 py-3.5 rounded-full bg-savanna-700 hover:bg-savanna-800 text-white font-semibold transition-all hover:scale-[1.02]">
+              <i data-lucide="mail" class="h-5 w-5"></i>
+              Send by Email
             </button>
             <a href="tel:+255767201113" class="inline-flex items-center justify-center gap-2 px-4 sm:px-6 py-3.5 rounded-full border-2 border-savanna-300 text-savanna-700 font-semibold hover:bg-savanna-50 transition-colors">
               <i data-lucide="phone" class="h-5 w-5"></i>
@@ -218,7 +212,7 @@
 
           <p class="text-xs text-sand-500 text-center pt-1">
             <i data-lucide="send" class="inline h-3 w-3 mr-1"></i>
-            Your inquiry opens WhatsApp with your details pre-filled.
+            Your inquiry opens WhatsApp or your email app with your details pre-filled.
           </p>
         </form>
       </div>
@@ -301,31 +295,56 @@
 </button>
 
 <script src="script.js"></script>
+
+<!-- ============ CONTACT FORM: send via WhatsApp or Email ============ -->
 <script>
 (function () {
-  const cards = Array.from(document.querySelectorAll(".trip-card"));
-  const btns = Array.from(document.querySelectorAll(".filter-btn"));
-  const count = document.getElementById("tripCount");
-  const empty = document.getElementById("tripEmpty");
-  const names = { all: "trips", safari: "safaris", trek: "treks", beach: "beach trips" };
-  function apply(f) {
-    let n = 0;
-    cards.forEach((c) => {
-      const show = f === "all" || c.dataset.cats.split(" ").includes(f);
-      c.classList.toggle("hidden", !show);
-      if (show) n++;
-    });
-    btns.forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.filter === f)));
-    count.textContent = "Showing " + n + " " + (n === 1 ? names[f].replace(/s$/, "") : names[f]);
-    empty.classList.toggle("hidden", n !== 0);
+  var form = document.getElementById('contactForm');
+  if (!form) return;
+
+  var WA_NUMBER = '255784749895';
+  var EMAIL = 'info@supremetanzaniasafaris.com';
+
+  function val(name) {
+    var el = form.querySelector('[name="' + name + '"]');
+    return el ? String(el.value || '').trim() : '';
   }
-  btns.forEach((b) => b.addEventListener("click", () => {
-    apply(b.dataset.filter);
-    const h = b.dataset.filter === "all" ? "" : "#" + b.dataset.filter;
-    history.replaceState(null, "", location.pathname + h);
-  }));
-  const start = location.hash.slice(1);
-  apply(["safari", "trek", "beach"].includes(start) ? start : "all");
+
+  function buildText() {
+    var lines = [
+      'Name: ' + val('name'),
+      'Email: ' + val('email')
+    ];
+    if (val('phone'))     lines.push('Phone: ' + val('phone'));
+    if (val('date'))      lines.push('Travel date: ' + val('date'));
+    if (val('travelers')) lines.push('Travelers: ' + val('travelers'));
+    if (val('adventure')) lines.push('Interested in: ' + val('adventure'));
+    if (val('message'))   lines.push('', val('message'));
+    return lines.join('\n');
+  }
+
+  // Pressing Enter in a field should not reload the page
+  form.addEventListener('submit', function (e) { e.preventDefault(); });
+
+  document.getElementById('sendWa').addEventListener('click', function () {
+    if (!form.reportValidity()) return;
+    var text = 'Hello Supreme Tanzania Safaris,\n\n' + buildText();
+    window.open(
+      'https://api.whatsapp.com/send?phone=' + WA_NUMBER + '&text=' + encodeURIComponent(text),
+      '_blank',
+      'noopener'
+    );
+  });
+
+  document.getElementById('sendEmail').addEventListener('click', function () {
+    if (!form.reportValidity()) return;
+    var subject = 'Safari inquiry from ' + val('name');
+    var body = 'Hello Supreme Tanzania Safaris,\n\n' + buildText();
+    window.location.href =
+      'mailto:' + EMAIL +
+      '?subject=' + encodeURIComponent(subject) +
+      '&body=' + encodeURIComponent(body);
+  });
 })();
 </script>
 
