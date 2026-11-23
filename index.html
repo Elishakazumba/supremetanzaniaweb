@@ -80,6 +80,18 @@
     .partner-card img { max-width: 100%; max-height: 100%; object-fit: contain; }
     @media (max-width: 760px) { .partners-grid { grid-template-columns: repeat(2, 1fr); gap: 14px; } .partner-card { height: 100px; } }
   .hero-content h1 { font-weight: 600; letter-spacing: 0.01em; }
+
+    /* Email buttons (sit beside WhatsApp buttons) */
+    .card-actions { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+    .link-email, .btn-outline-email { display: inline-flex; align-items: center; gap: 8px; font-weight: 600; text-decoration: none; cursor: pointer; transition: all .2s ease; }
+    .link-email { color: #6f4e37; font-size: 0.85rem; letter-spacing: 0.04em; }
+    .link-email i { font-size: 1rem; }
+    .link-email:hover { color: #33241a; text-decoration: underline; }
+    .btn-outline-email { padding: 0.65rem 1.1rem; border-radius: 999px; border: 2px solid #6f4e37; color: #6f4e37; background: transparent; font-size: 0.8rem; letter-spacing: 0.04em; }
+    .btn-outline-email:hover { background: #6f4e37; color: #fff; transform: translateY(-1px); box-shadow: 0 6px 16px rgba(111,78,55,0.25); }
+    .email-float { position: fixed; right: 20px; bottom: 90px; z-index: 999; display: flex; align-items: center; gap: 8px; padding: 0.75rem 1.1rem; border-radius: 999px; background: #6f4e37; color: #fff; text-decoration: none; font-weight: 600; font-size: 0.8rem; letter-spacing: 0.04em; box-shadow: 0 6px 20px rgba(0,0,0,0.25); transition: all .2s ease; }
+    .email-float:hover { background: #33241a; transform: translateY(-2px); }
+    @media (max-width: 640px) { .email-float span { display: none; } .email-float { padding: 0.9rem; } }
   </style>
 </head>
 <body>
@@ -90,6 +102,11 @@
   <!-- FLOATING WHATSAPP -->
   <a href="https://wa.me/255784749895?text=Hello%20Supreme%20Tanzania%20Safaris%2C%20I'm%20interested%20in%20planning%20a%20safari%20in%20Tanzania." target="_blank" class="whatsapp-float" aria-label="Chat on WhatsApp">
     <i class="fab fa-whatsapp"></i><span>CHAT WITH SUPREME</span>
+  </a>
+
+  <!-- FLOATING EMAIL -->
+  <a href="mailto:info@supremetanzaniasafaris.com?subject=Safari%20Enquiry" class="email-float" aria-label="Send us an email">
+    <i class="fas fa-envelope"></i><span>EMAIL US</span>
   </a>
 
   <main>
@@ -152,6 +169,7 @@
               <div class="card-actions">
                 <a href="8-day-spectacular-migration-serengeti.html" class="link-ghost">VIEW EXPERIENCE</a>
                 <a href="https://wa.me/255784749895" target="_blank" class="link-wa"><i class="fab fa-whatsapp"></i> ASK ON WHATSAPP</a>
+                <a href="mailto:info@supremetanzaniasafaris.com?subject=Safari%20Enquiry" class="link-email"><i class="fas fa-envelope"></i> ASK BY EMAIL</a>
               </div>
             </div>
           </div>
@@ -166,6 +184,7 @@
               <div class="card-actions">
                 <a href="4-days-3-nights-serengeti-ngorongoro-crater.html" class="link-ghost">VIEW EXPERIENCE</a>
                 <a href="https://wa.me/255784749895" target="_blank" class="link-wa"><i class="fab fa-whatsapp"></i> ASK ON WHATSAPP</a>
+                <a href="mailto:info@supremetanzaniasafaris.com?subject=Safari%20Enquiry" class="link-email"><i class="fas fa-envelope"></i> ASK BY EMAIL</a>
               </div>
             </div>
           </div>
@@ -180,6 +199,7 @@
               <div class="card-actions">
                 <a href="8-days-7-nights-tarangire-serengeti-ngorongoro-manyara-arusha.html" class="link-ghost">VIEW EXPERIENCE</a>
                 <a href="https://wa.me/255784749895" target="_blank" class="link-wa"><i class="fab fa-whatsapp"></i> ASK ON WHATSAPP</a>
+                <a href="mailto:info@supremetanzaniasafaris.com?subject=Safari%20Enquiry" class="link-email"><i class="fas fa-envelope"></i> ASK BY EMAIL</a>
               </div>
             </div>
           </div>
@@ -194,6 +214,7 @@
               <div class="card-actions">
                 <a href="3-days-mikumi-national-park.html" class="link-ghost">VIEW EXPERIENCE</a>
                 <a href="https://wa.me/255784749895" target="_blank" class="link-wa"><i class="fab fa-whatsapp"></i> ASK ON WHATSAPP</a>
+                <a href="mailto:info@supremetanzaniasafaris.com?subject=Safari%20Enquiry" class="link-email"><i class="fas fa-envelope"></i> ASK BY EMAIL</a>
               </div>
             </div>
           </div>
@@ -217,6 +238,7 @@
           <div class="featured-buttons">
             <a href="#contact" class="btn-primary"><i class="fas fa-file-invoice"></i> REQUEST A QUOTE</a>
             <a href="https://wa.me/255784749895" target="_blank" class="btn-secondary"><i class="fab fa-whatsapp"></i> CHAT ON WHATSAPP</a>
+            <a href="mailto:info@supremetanzaniasafaris.com?subject=Safari%20Enquiry" class="btn-secondary"><i class="fas fa-envelope"></i> EMAIL US</a>
           </div>
         </div>
       </div>
@@ -254,6 +276,7 @@
               <div class="card-actions">
                 <a href="mikumi-day-trip.html" class="btn-primary-dark">VIEW EXPERIENCE</a>
                 <a href="https://wa.me/255784749895" target="_blank" class="btn-outline-wa"><i class="fab fa-whatsapp"></i> ASK ON WHATSAPP</a>
+                <a href="mailto:info@supremetanzaniasafaris.com?subject=Tour%20Enquiry" class="btn-outline-email"><i class="fas fa-envelope"></i> ASK BY EMAIL</a>
               </div>
             </div>
           </div>
@@ -267,6 +290,7 @@
               <div class="card-actions">
                 <a href="pangani-town.html" class="btn-primary-dark">VIEW EXPERIENCE</a>
                 <a href="https://wa.me/255784749895" target="_blank" class="btn-outline-wa"><i class="fab fa-whatsapp"></i> ASK ON WHATSAPP</a>
+                <a href="mailto:info@supremetanzaniasafaris.com?subject=Tour%20Enquiry" class="btn-outline-email"><i class="fas fa-envelope"></i> ASK BY EMAIL</a>
               </div>
             </div>
           </div>
@@ -280,6 +304,7 @@
               <div class="card-actions">
                 <a href="zanzibar.html" class="btn-primary-dark">VIEW EXPERIENCE</a>
                 <a href="https://wa.me/255784749895" target="_blank" class="btn-outline-wa"><i class="fab fa-whatsapp"></i> ASK ON WHATSAPP</a>
+                <a href="mailto:info@supremetanzaniasafaris.com?subject=Tour%20Enquiry" class="btn-outline-email"><i class="fas fa-envelope"></i> ASK BY EMAIL</a>
               </div>
             </div>
           </div>
@@ -293,6 +318,7 @@
               <div class="card-actions">
                 <a href="kilimanjaro.html" class="btn-primary-dark">VIEW EXPERIENCE</a>
                 <a href="https://wa.me/255784749895" target="_blank" class="btn-outline-wa"><i class="fab fa-whatsapp"></i> ASK ON WHATSAPP</a>
+                <a href="mailto:info@supremetanzaniasafaris.com?subject=Tour%20Enquiry" class="btn-outline-email"><i class="fas fa-envelope"></i> ASK BY EMAIL</a>
               </div>
             </div>
           </div>
@@ -306,6 +332,7 @@
               <div class="card-actions">
                 <a href="mafia-island.html" class="btn-primary-dark">VIEW EXPERIENCE</a>
                 <a href="https://wa.me/255784749895" target="_blank" class="btn-outline-wa"><i class="fab fa-whatsapp"></i> ASK ON WHATSAPP</a>
+                <a href="mailto:info@supremetanzaniasafaris.com?subject=Tour%20Enquiry" class="btn-outline-email"><i class="fas fa-envelope"></i> ASK BY EMAIL</a>
               </div>
             </div>
           </div>
@@ -319,6 +346,7 @@
               <div class="card-actions">
                 <a href="mount-meru.html" class="btn-primary-dark">VIEW EXPERIENCE</a>
                 <a href="https://wa.me/255784749895" target="_blank" class="btn-outline-wa"><i class="fab fa-whatsapp"></i> ASK ON WHATSAPP</a>
+                <a href="mailto:info@supremetanzaniasafaris.com?subject=Tour%20Enquiry" class="btn-outline-email"><i class="fas fa-envelope"></i> ASK BY EMAIL</a>
               </div>
             </div>
           </div>
@@ -473,6 +501,7 @@
             <div class="form-buttons">
               <button type="submit" class="btn-primary"><i class="fas fa-paper-plane"></i> REQUEST A QUOTE</button>
               <a href="https://wa.me/255784749895" target="_blank" class="btn-secondary"><i class="fab fa-whatsapp"></i> CHAT ON WHATSAPP</a>
+              <a href="mailto:info@supremetanzaniasafaris.com?subject=Safari%20Enquiry" class="btn-secondary"><i class="fas fa-envelope"></i> EMAIL US</a>
             </div>
           </form>
           <div class="contact-info">
@@ -507,6 +536,7 @@
         <div class="cta-buttons">
           <a href="booking.html" class="btn-primary"><i class="fas fa-compass"></i> PLAN MY TRIP</a>
           <a href="https://wa.me/255784749895" target="_blank" class="btn-secondary"><i class="fab fa-whatsapp"></i> CHAT ON WHATSAPP</a>
+          <a href="mailto:info@supremetanzaniasafaris.com?subject=Safari%20Enquiry" class="btn-secondary"><i class="fas fa-envelope"></i> EMAIL US</a>
         </div>
       </div>
     </section>
