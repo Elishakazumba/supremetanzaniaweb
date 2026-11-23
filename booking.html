@@ -64,7 +64,10 @@
   .filter-btn:focus-visible{outline:3px solid #a07a58;outline-offset:2px}
   .trip-card{transition:box-shadow .25s ease}
   .trip-card:hover{box-shadow:0 12px 28px -12px rgba(51, 36, 26,.35)}
-  
+  .adv-btn{border:2px solid #e8dccf;background:#fff;color:#5a3e2b;border-radius:1rem;padding:.9rem .75rem;font-weight:600;font-size:.95rem;transition:all .2s ease;cursor:pointer}
+  .adv-btn:hover{background:#f7f1ec}
+  .adv-btn[aria-pressed="true"]{background:#6f4e37;border-color:#6f4e37;color:#fff}
+  .adv-btn:focus-visible{outline:3px solid #a07a58;outline-offset:2px}
 </style>
 </head>
 <body class="min-h-screen bg-sand-50 font-sans text-[#2a241c]">
@@ -113,12 +116,12 @@
             How many travelers?
           </label>
           <div class="flex items-center justify-center gap-6">
-            <button id="plannerDecBtn" class="flex items-center justify-center h-14 w-14 rounded-full bg-sand-200 text-savanna-700 text-2xl font-bold hover:bg-sand-300 transition-colors" aria-label="Decrease travelers">&minus;</button>
+            <button type="button" id="plannerDecBtn" class="flex items-center justify-center h-14 w-14 rounded-full bg-sand-200 text-savanna-700 text-2xl font-bold hover:bg-sand-300 transition-colors" aria-label="Decrease travelers">&minus;</button>
             <div class="text-center">
               <p class="font-display text-5xl font-bold text-savanna-800" id="plannerTravelersCount">2</p>
               <p class="text-sm text-sand-600 mt-1" id="plannerTravelersLabel">Travelers</p>
             </div>
-            <button id="plannerIncBtn" class="flex items-center justify-center h-14 w-14 rounded-full bg-sand-200 text-savanna-700 text-2xl font-bold hover:bg-sand-300 transition-colors" aria-label="Increase travelers">+</button>
+            <button type="button" id="plannerIncBtn" class="flex items-center justify-center h-14 w-14 rounded-full bg-sand-200 text-savanna-700 text-2xl font-bold hover:bg-sand-300 transition-colors" aria-label="Increase travelers">+</button>
           </div>
         </div>
 
@@ -133,19 +136,19 @@
 
       <!-- Navigation -->
       <div class="mt-8 flex items-center justify-between gap-3">
-        <button id="plannerBackBtn" class="px-6 py-3 rounded-full text-savanna-700 font-semibold hover:bg-savanna-50 transition-colors hidden">Back</button>
+        <button type="button" id="plannerBackBtn" class="px-6 py-3 rounded-full text-savanna-700 font-semibold hover:bg-savanna-50 transition-colors hidden">Back</button>
         <span id="plannerBackSpacer"></span>
 
-        <button id="plannerNextBtn" class="inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-savanna-600 hover:bg-savanna-700 text-white font-semibold shadow-lg disabled:opacity-40 disabled:cursor-not-allowed transition-all hover:scale-[1.02] disabled:hover:scale-100" disabled>
+        <button type="button" id="plannerNextBtn" class="inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-savanna-600 hover:bg-savanna-700 text-white font-semibold shadow-lg disabled:opacity-40 disabled:cursor-not-allowed transition-all hover:scale-[1.02] disabled:hover:scale-100" disabled>
           Next
           <i data-lucide="chevron-right" class="h-5 w-5"></i>
         </button>
 
         <div id="plannerFinalBtns" class="hidden gap-2">
-          <button id="plannerResetBtn" class="px-5 py-3.5 rounded-full border-2 border-sand-300 text-sand-700 font-semibold hover:bg-sand-100 transition-colors">Reset</button>
-          <button id="plannerSubmitBtn" class="inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-whatsapp hover:bg-whatsapp-dark text-white font-semibold shadow-lg shadow-whatsapp/30 transition-all hover:scale-[1.02]">
+          <button type="button" id="plannerResetBtn" class="px-5 py-3.5 rounded-full border-2 border-sand-300 text-sand-700 font-semibold hover:bg-sand-100 transition-colors">Reset</button>
+          <button type="button" id="plannerSubmitBtn" class="inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-whatsapp hover:bg-whatsapp-dark text-white font-semibold shadow-lg shadow-whatsapp/30 transition-all hover:scale-[1.02]">
             <i data-lucide="message-circle" class="h-5 w-5"></i>
-            Send on WhatsApp
+            Send on WhatsApp &amp; Email
           </button>
         </div>
       </div>
@@ -237,7 +240,7 @@
           <div class="flex flex-col sm:flex-row gap-3 pt-2">
             <button type="submit" class="flex-1 inline-flex items-center justify-center gap-2 px-4 sm:px-6 py-3.5 rounded-full bg-whatsapp hover:bg-whatsapp-dark text-white font-semibold shadow-lg shadow-whatsapp/30 transition-all hover:scale-[1.02]">
               <i data-lucide="message-circle" class="h-5 w-5"></i>
-              Send Inquiry on WhatsApp
+              Send Inquiry on WhatsApp &amp; Email
             </button>
             <a href="tel:+255767201113" class="inline-flex items-center justify-center gap-2 px-4 sm:px-6 py-3.5 rounded-full border-2 border-savanna-300 text-savanna-700 font-semibold hover:bg-savanna-50 transition-colors">
               <i data-lucide="phone" class="h-5 w-5"></i>
@@ -247,7 +250,7 @@
 
           <p class="text-xs text-sand-500 text-center pt-1">
             <i data-lucide="send" class="inline h-3 w-3 mr-1"></i>
-            Your inquiry opens WhatsApp with your details pre-filled.
+            Your inquiry opens WhatsApp and your email app with your details pre-filled.
           </p>
         </form>
       </div>
@@ -330,31 +333,222 @@
 </button>
 
 <script src="script.js"></script>
+
+<!-- ============ BOOKING: planner + inquiry form -> WhatsApp AND email ============ -->
 <script>
 (function () {
-  const cards = Array.from(document.querySelectorAll(".trip-card"));
-  const btns = Array.from(document.querySelectorAll(".filter-btn"));
-  const count = document.getElementById("tripCount");
-  const empty = document.getElementById("tripEmpty");
-  const names = { all: "trips", safari: "safaris", trek: "treks", beach: "beach trips" };
-  function apply(f) {
-    let n = 0;
-    cards.forEach((c) => {
-      const show = f === "all" || c.dataset.cats.split(" ").includes(f);
-      c.classList.toggle("hidden", !show);
-      if (show) n++;
-    });
-    btns.forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.filter === f)));
-    count.textContent = "Showing " + n + " " + (n === 1 ? names[f].replace(/s$/, "") : names[f]);
-    empty.classList.toggle("hidden", n !== 0);
+  var WA_NUMBER = "255784749895";
+  var EMAIL = "info@supremetanzaniasafaris.com";
+  var ADVENTURES = [
+    "Wildlife Safari",
+    "Kilimanjaro Trek",
+    "Mount Meru Trek",
+    "Ol Doinyo Lengai Trek",
+    "Zanzibar Beach Escape",
+    "Volunteering"
+  ];
+
+  // Remove any handlers script.js attached, so nothing fires twice.
+  function fresh(id) {
+    var el = document.getElementById(id);
+    if (!el) return null;
+    var clone = el.cloneNode(true);
+    el.parentNode.replaceChild(clone, el);
+    return clone;
   }
-  btns.forEach((b) => b.addEventListener("click", () => {
-    apply(b.dataset.filter);
-    const h = b.dataset.filter === "all" ? "" : "#" + b.dataset.filter;
-    history.replaceState(null, "", location.pathname + h);
-  }));
-  const start = location.hash.slice(1);
-  apply(["safari", "trek", "beach"].includes(start) ? start : "all");
+
+  function refreshIcons() {
+    if (window.lucide && typeof window.lucide.createIcons === "function") {
+      window.lucide.createIcons();
+    }
+  }
+
+  // Opens WhatsApp (new tab) and the visitor's email app with the same message.
+  function sendBoth(subject, text) {
+    window.open(
+      "https://api.whatsapp.com/send?phone=" + WA_NUMBER + "&text=" + encodeURIComponent(text),
+      "_blank",
+      "noopener"
+    );
+    var a = document.createElement("a");
+    a.href = "mailto:" + EMAIL +
+      "?subject=" + encodeURIComponent(subject) +
+      "&body=" + encodeURIComponent(text);
+    a.style.display = "none";
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+  }
+
+  /* ---------------- Trip planner ---------------- */
+  var state = { step: 0, adventure: "", date: "", travelers: 2, details: "" };
+  var LAST = 3;
+  var today = new Date().toISOString().slice(0, 10);
+
+  var progress = fresh("plannerProgress");
+  var grid = fresh("plannerAdventureGrid");
+  var dateInput = fresh("plannerDate");
+  var countEl = document.getElementById("plannerTravelersCount");
+  var labelEl = document.getElementById("plannerTravelersLabel");
+  var decBtn = fresh("plannerDecBtn");
+  var incBtn = fresh("plannerIncBtn");
+  var detailsEl = fresh("plannerDetails");
+  var backBtn = fresh("plannerBackBtn");
+  var backSpacer = document.getElementById("plannerBackSpacer");
+  var nextBtn = fresh("plannerNextBtn");
+  var finalBtns = document.getElementById("plannerFinalBtns");
+  var resetBtn = fresh("plannerResetBtn");
+  var submitBtn = fresh("plannerSubmitBtn");
+
+  if (grid && nextBtn && submitBtn) {
+    dateInput.min = today;
+
+    grid.innerHTML = "";
+    ADVENTURES.forEach(function (name) {
+      var b = document.createElement("button");
+      b.type = "button";
+      b.className = "adv-btn";
+      b.textContent = name;
+      b.setAttribute("aria-pressed", "false");
+      b.addEventListener("click", function () {
+        state.adventure = name;
+        Array.prototype.forEach.call(grid.children, function (c) {
+          c.setAttribute("aria-pressed", String(c === b));
+        });
+        render();
+      });
+      grid.appendChild(b);
+    });
+
+    function canContinue() {
+      if (state.step === 0) return !!state.adventure;
+      if (state.step === 1) return !!state.date;
+      return true;
+    }
+
+    function renderProgress() {
+      var html = "";
+      for (var i = 0; i <= LAST; i++) {
+        var active = i <= state.step;
+        html += '<div class="flex h-9 w-9 items-center justify-center rounded-full text-sm font-bold ' +
+          (active ? "bg-savanna-600 text-white" : "bg-sand-200 text-sand-600") + '">' + (i + 1) + "</div>";
+        if (i < LAST) {
+          html += '<div class="mx-2 h-0.5 flex-1 ' + (i < state.step ? "bg-savanna-600" : "bg-sand-200") + '"></div>';
+        }
+      }
+      progress.innerHTML = html;
+    }
+
+    function render() {
+      for (var i = 0; i <= LAST; i++) {
+        var s = document.getElementById("plannerStep" + i);
+        if (s) s.classList.toggle("hidden", i !== state.step);
+      }
+      renderProgress();
+      countEl.textContent = state.travelers;
+      labelEl.textContent = state.travelers === 1 ? "Traveler" : "Travelers";
+      backBtn.classList.toggle("hidden", state.step === 0);
+      backSpacer.classList.toggle("hidden", state.step !== 0);
+      var isLast = state.step === LAST;
+      nextBtn.classList.toggle("hidden", isLast);
+      finalBtns.classList.toggle("hidden", !isLast);
+      finalBtns.classList.toggle("flex", isLast);
+      nextBtn.disabled = !canContinue();
+    }
+
+    nextBtn.addEventListener("click", function () {
+      if (!canContinue() || state.step >= LAST) return;
+      state.step++;
+      render();
+    });
+    backBtn.addEventListener("click", function () {
+      if (state.step > 0) { state.step--; render(); }
+    });
+    dateInput.addEventListener("input", function () { state.date = dateInput.value; render(); });
+    dateInput.addEventListener("change", function () { state.date = dateInput.value; render(); });
+    decBtn.addEventListener("click", function () {
+      if (state.travelers > 1) { state.travelers--; render(); }
+    });
+    incBtn.addEventListener("click", function () {
+      if (state.travelers < 50) { state.travelers++; render(); }
+    });
+    detailsEl.addEventListener("input", function () { state.details = detailsEl.value; });
+
+    resetBtn.addEventListener("click", function () {
+      state = { step: 0, adventure: "", date: "", travelers: 2, details: "" };
+      dateInput.value = "";
+      detailsEl.value = "";
+      Array.prototype.forEach.call(grid.children, function (c) { c.setAttribute("aria-pressed", "false"); });
+      render();
+    });
+
+    submitBtn.addEventListener("click", function () {
+      var lines = [
+        "Hello Supreme Tanzania Safaris, I'd like to plan a trip to Tanzania.",
+        "",
+        "Adventure: " + state.adventure,
+        "Travel date: " + state.date,
+        "Travelers: " + state.travelers,
+        "Details: " + (state.details.trim() || "Not provided")
+      ];
+      sendBoth("Trip plan: " + state.adventure, lines.join("\n"));
+    });
+
+    render();
+  }
+
+  /* ---------------- Inquiry form ---------------- */
+  var form = fresh("contactForm");
+  if (form) {
+    var tSel = form.querySelector("#contactTravelers");
+    var aSel = form.querySelector("#contactAdventure");
+    var cDate = form.querySelector("#contactDate");
+    if (cDate) cDate.min = today;
+
+    tSel.innerHTML = "";
+    var tp = document.createElement("option");
+    tp.value = ""; tp.textContent = "Number of travelers";
+    tSel.appendChild(tp);
+    for (var n = 1; n <= 10; n++) {
+      var o = document.createElement("option");
+      o.value = String(n);
+      o.textContent = n + (n === 1 ? " traveler" : " travelers");
+      tSel.appendChild(o);
+    }
+    var more = document.createElement("option");
+    more.value = "10+"; more.textContent = "More than 10";
+    tSel.appendChild(more);
+
+    aSel.innerHTML = "";
+    var ap = document.createElement("option");
+    ap.value = ""; ap.textContent = "Type of adventure";
+    aSel.appendChild(ap);
+    ADVENTURES.forEach(function (name) {
+      var o2 = document.createElement("option");
+      o2.value = name; o2.textContent = name;
+      aSel.appendChild(o2);
+    });
+
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+      var f = new FormData(form);
+      function v(k) { return String(f.get(k) || "").trim() || "Not provided"; }
+      var lines = [
+        "Hello Supreme Tanzania Safaris, I'd like to make an inquiry.",
+        "",
+        "Name: " + v("name"),
+        "Email: " + v("email"),
+        "Phone: " + v("phone"),
+        "Travel date: " + v("date"),
+        "Travelers: " + v("travelers"),
+        "Adventure: " + v("adventure"),
+        "Message: " + v("message")
+      ];
+      sendBoth("Website inquiry from " + v("name"), lines.join("\n"));
+    });
+  }
+
+  refreshIcons();
 })();
 </script>
 
